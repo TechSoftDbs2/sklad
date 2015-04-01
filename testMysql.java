@@ -14,8 +14,8 @@ public class testMySQL {
 		
 		//con = DriverManager.getConnection("jdbc:mysql://95.143.143.9:3306/dbs" + "user=dbs&password=dbs");
 		//con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dbs" + "user=root&password=''")
-	    //con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dbs", "root", "");
-		con = DriverManager.getConnection("jdbc:mysql://95.143.143.9:3306/pkg/dbs", "dbs", "dbs");
+	    con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dbs", "root", "");
+	//	con = DriverManager.getConnection("jdbc:mysql://95.143.143.9:3306/pkg/dbs", "dbs", "dbs");
 		
 	    }catch (ClassNotFoundException e){
 	    	e.printStackTrace();
