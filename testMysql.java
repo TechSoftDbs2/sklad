@@ -35,7 +35,7 @@ public class testMySQL {
 		} else {
 			System.out.println("Failed to make connection!");
 		}
-	    
+	    //vkládání do DB insert
 	    try {
 			Statement s = con.createStatement();
 			s.executeUpdate("CREATE TABLE Persons(PersonID int,"
