@@ -1,4 +1,4 @@
-package Gui1;
+package Gui2;
 
 import java.awt.EventQueue;
 
@@ -39,7 +39,7 @@ public class Okno {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 200, 300);
+		frame.setBounds(100, 100, 230, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -50,15 +50,15 @@ public class Okno {
 				f1.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(10, 31, 164, 23);
+		btnNewButton.setBounds(10, 31, 194, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Odd\u011Blen\u00ED v\u00FDroby");
-		btnNewButton_1.setBounds(10, 106, 164, 23);
+		btnNewButton_1.setBounds(10, 106, 194, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Sklad dokon\u010Den\u00FDch zak\u00E1zek");
-		btnNewButton_2.setBounds(10, 181, 164, 23);
+		btnNewButton_2.setBounds(10, 181, 194, 23);
 		frame.getContentPane().add(btnNewButton_2);
 	}
 }
