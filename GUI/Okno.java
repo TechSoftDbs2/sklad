@@ -1,4 +1,4 @@
-package Gui3;
+package Gui;
 
 import java.awt.EventQueue;
 
