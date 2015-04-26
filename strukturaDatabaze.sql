@@ -3,7 +3,6 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Čtv 23. dub 2015, 13:56
 -- Verze serveru: 5.6.21
 -- Verze PHP: 5.6.3
 
@@ -27,10 +26,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `adresy` (
+`adresyID` int(11) NOT NULL,
   `mesto` varchar(50) NOT NULL,
   `PSC` char(6) NOT NULL,
-  `ulice` varchar(50) NOT NULL,
-  `adresyID` int(11) NOT NULL
+  `ulice` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -40,9 +39,17 @@ CREATE TABLE IF NOT EXISTS `adresy` (
 --
 
 CREATE TABLE IF NOT EXISTS `druhy_surovin` (
-  `nazev` varchar(50) NOT NULL,
-  `druhy_surovinID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+`druhy_surovinID` int(11) NOT NULL,
+  `nazev` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Vypisuji data pro tabulku `druhy_surovin`
+--
+
+INSERT INTO `druhy_surovin` (`druhy_surovinID`, `nazev`) VALUES
+(1, 'Dřevo'),
+(2, 'Železo');
 
 -- --------------------------------------------------------
 
@@ -51,8 +58,8 @@ CREATE TABLE IF NOT EXISTS `druhy_surovin` (
 --
 
 CREATE TABLE IF NOT EXISTS `druhy_vyrobku` (
-  `pouziti` varchar(50) NOT NULL,
-  `druhy_vyrobkuID` int(11) NOT NULL
+`druhy_vyrobkuID` int(11) NOT NULL,
+  `pouziti` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -62,11 +69,11 @@ CREATE TABLE IF NOT EXISTS `druhy_vyrobku` (
 --
 
 CREATE TABLE IF NOT EXISTS `suroviny` (
-  `kusy` int(11) NOT NULL,
+`surovinyID` int(11) NOT NULL,
   `nazev` varchar(50) NOT NULL,
+  `kusy` int(11) NOT NULL,
   `material` varchar(50) NOT NULL,
   `vaha` int(11) NOT NULL,
-  `surovinyID` int(11) NOT NULL,
   `druhy_surovinID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -77,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `suroviny` (
 --
 
 CREATE TABLE IF NOT EXISTS `surovinyvyrobku` (
-  `surovinyVyrobkuID` int(11) NOT NULL,
+`surovinyVyrobkuID` int(11) NOT NULL,
   `surovinyID` int(11) NOT NULL,
   `vyrobkyID` int(11) NOT NULL,
   ` kusy` int(11) NOT NULL
@@ -90,12 +97,12 @@ CREATE TABLE IF NOT EXISTS `surovinyvyrobku` (
 --
 
 CREATE TABLE IF NOT EXISTS `vyrobky` (
+`vyrobkyID` int(11) NOT NULL,
+  `seriove_cislo` int(11) NOT NULL,
   `hloubka` int(11) NOT NULL,
   `nazev` varchar(50) NOT NULL,
-  `seriove_cislo` int(11) NOT NULL,
   `sirka` int(11) NOT NULL,
   `vyska` int(11) NOT NULL,
-  `vyrobkyID` int(11) NOT NULL,
   `druhy_vyrobkuID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -108,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `vyrobky` (
 CREATE TABLE IF NOT EXISTS `vyrobkyzakazek` (
   `barva` varchar(50) NOT NULL,
   `mnozstvi` int(11) NOT NULL,
-  `vyrobkyZakazekID` int(11) NOT NULL,
+`vyrobkyZakazekID` int(11) NOT NULL,
   `vyrobkyID` int(11) NOT NULL,
   `zakazkyID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -122,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `vyrobkyzakazek` (
 CREATE TABLE IF NOT EXISTS `zakazky` (
   `datum_dodani` date DEFAULT NULL,
   `datum_objednani` date NOT NULL,
-  `zakazkyID` int(11) NOT NULL,
+`zakazkyID` int(11) NOT NULL,
   `zakazniciID` int(11) NOT NULL,
   `zamestnanciID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -134,11 +141,11 @@ CREATE TABLE IF NOT EXISTS `zakazky` (
 --
 
 CREATE TABLE IF NOT EXISTS `zakaznici` (
-  `email` varchar(50) NOT NULL,
+`zakazniciID` int(11) NOT NULL,
   `jmeno` varchar(50) NOT NULL,
   `prijmeni` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `telefon` varchar(16) NOT NULL,
-  `zakazniciID` int(11) NOT NULL,
   `adresyID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -149,11 +156,11 @@ CREATE TABLE IF NOT EXISTS `zakaznici` (
 --
 
 CREATE TABLE IF NOT EXISTS `zamestnanci` (
-  `email` varchar(50) NOT NULL,
+`zamestnanciID` int(11) NOT NULL,
   `jmeno` varchar(50) NOT NULL,
   `prijmeni` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `telefon` varchar(16) NOT NULL,
-  `zamestnanciID` int(11) NOT NULL,
   `adresyID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -221,6 +228,60 @@ ALTER TABLE `zakaznici`
 ALTER TABLE `zamestnanci`
  ADD PRIMARY KEY (`zamestnanciID`), ADD KEY `adresyID` (`adresyID`);
 
+--
+-- AUTO_INCREMENT pro tabulky
+--
+
+--
+-- AUTO_INCREMENT pro tabulku `adresy`
+--
+ALTER TABLE `adresy`
+MODIFY `adresyID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `druhy_surovin`
+--
+ALTER TABLE `druhy_surovin`
+MODIFY `druhy_surovinID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pro tabulku `druhy_vyrobku`
+--
+ALTER TABLE `druhy_vyrobku`
+MODIFY `druhy_vyrobkuID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `suroviny`
+--
+ALTER TABLE `suroviny`
+MODIFY `surovinyID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `surovinyvyrobku`
+--
+ALTER TABLE `surovinyvyrobku`
+MODIFY `surovinyVyrobkuID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `vyrobky`
+--
+ALTER TABLE `vyrobky`
+MODIFY `vyrobkyID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `vyrobkyzakazek`
+--
+ALTER TABLE `vyrobkyzakazek`
+MODIFY `vyrobkyZakazekID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `zakazky`
+--
+ALTER TABLE `zakazky`
+MODIFY `zakazkyID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `zakaznici`
+--
+ALTER TABLE `zakaznici`
+MODIFY `zakazniciID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pro tabulku `zamestnanci`
+--
+ALTER TABLE `zamestnanci`
+MODIFY `zamestnanciID` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
