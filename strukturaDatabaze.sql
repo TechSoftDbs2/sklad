@@ -3,6 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: 127.0.0.1
+-- Vytvořeno: Ned 26. dub 2015, 14:41
 -- Verze serveru: 5.6.21
 -- Verze PHP: 5.6.3
 
@@ -113,9 +114,9 @@ CREATE TABLE IF NOT EXISTS `vyrobky` (
 --
 
 CREATE TABLE IF NOT EXISTS `vyrobkyzakazek` (
+`vyrobkyZakazekID` int(11) NOT NULL,
   `barva` varchar(50) NOT NULL,
   `mnozstvi` int(11) NOT NULL,
-`vyrobkyZakazekID` int(11) NOT NULL,
   `vyrobkyID` int(11) NOT NULL,
   `zakazkyID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -127,9 +128,9 @@ CREATE TABLE IF NOT EXISTS `vyrobkyzakazek` (
 --
 
 CREATE TABLE IF NOT EXISTS `zakazky` (
+`zakazkyID` int(11) NOT NULL,
   `datum_dodani` date DEFAULT NULL,
   `datum_objednani` date NOT NULL,
-`zakazkyID` int(11) NOT NULL,
   `zakazniciID` int(11) NOT NULL,
   `zamestnanciID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
