@@ -54,10 +54,22 @@ public class Okno {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Odd\u011Blen\u00ED v\u00FDroby");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrameV f2 = new FrameV();
+				f2.setVisible(true);
+			}
+		});
 		btnNewButton_1.setBounds(10, 106, 194, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Sklad dokon\u010Den\u00FDch zak\u00E1zek");
+		JButton btnNewButton_2 = new JButton("P\u0159ehled zak\u00E1zek");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrameZ f3 = new FrameZ();
+				f3.setVisible(true);
+			}
+		});
 		btnNewButton_2.setBounds(10, 181, 194, 23);
 		frame.getContentPane().add(btnNewButton_2);
 	}
